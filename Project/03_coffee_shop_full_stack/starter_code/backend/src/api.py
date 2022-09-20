@@ -28,6 +28,21 @@ CORS(app)
     returns status code 200 and json {"success": True, "drinks": drinks} where drinks is the list of drinks
         or appropriate status code indicating reason for failure
 '''
+@app.route("/drinks")
+def get_all_drinks():
+    try:
+        drinks = Drink.query.all()
+
+        drinks_list = [drink.short() for drink in drinks]
+
+        return jsonify({
+            "success": True,
+            "drinks": drinks_list
+        })
+
+    except:
+        abort(404)
+
 
 
 '''
@@ -38,6 +53,22 @@ CORS(app)
     returns status code 200 and json {"success": True, "drinks": drinks} where drinks is the list of drinks
         or appropriate status code indicating reason for failure
 '''
+@app.route("/drinks-detail")
+@requires_auth("get:drinks-detail")
+def get_drinks_details(payload):
+    try:
+        drinks = Drink.query.all()
+
+        drinks_list = [drink.long() for drink in drinks]
+
+        return jsonify({
+            "success": True,
+            "drinks": drinks_list
+        })
+
+    except:
+        abort(401)
+
 
 
 '''
@@ -101,14 +132,34 @@ def unprocessable(error):
                     }), 404
 
 '''
+@app.errorhandler(401)
+def not_found(error):
+    return jsonify({
+        "success": False, 
+        "error": 401,
+        "message": "Unauthorised"
+        }), 401
 
 '''
 @TODO implement error handler for 404
     error handler should conform to general task above
 '''
-
+@app.errorhandler(404)
+def not_found(error):
+    return jsonify({
+        "success": False, 
+        "error": 404,
+        "message": "Resource not found"
+        }), 404
 
 '''
 @TODO implement error handler for AuthError
     error handler should conform to general task above
 '''
+@app.errorhandler(AuthError)
+def handle_auth_error(error):
+    return jsonify({
+        "success": False, 
+        "error": error.status_code,
+        "message": error.description
+        }), error.status_code
