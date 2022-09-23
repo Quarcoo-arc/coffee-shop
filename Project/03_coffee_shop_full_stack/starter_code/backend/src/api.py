@@ -98,7 +98,7 @@ def create_drink(permission):
 
         return jsonify({
             "success": True,
-            "drink": drink.long()
+            "drinks": [drink.long()]
         })
 
     except Exception as e:
@@ -125,7 +125,9 @@ def update_drink(permission, drink_id):
 
         payload = request.get_json()
         payload['recipe'] = json.dumps(payload['recipe'])
-        del payload['id']
+
+        if 'id' in payload:
+            del payload['id']
         
         updated = Drink.query.filter_by(id=drink_id).update(payload)
 
@@ -136,7 +138,7 @@ def update_drink(permission, drink_id):
 
             return jsonify({
                 "success": True,
-                "drink": drink.long()
+                "drinks": [drink.long()]
             })
         else:
             return jsonify({
@@ -210,6 +212,14 @@ def not_found(error):
         "error": 401,
         "message": "Unauthorised"
         }), 401
+
+@app.errorhandler(403)
+def not_allowed(error):
+    return jsonify({
+        "success": False, 
+        "error": 403,
+        "message": "Permission not granted"
+        }), 403
 
 @app.errorhandler(405)
 def not_allowed(error):

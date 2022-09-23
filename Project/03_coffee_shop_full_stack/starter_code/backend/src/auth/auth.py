@@ -1,3 +1,4 @@
+from distutils.log import error
 import json
 from flask import request, _request_ctx_stack, abort
 from functools import wraps
@@ -68,13 +69,19 @@ def check_permissions(permission, payload):
     try:
         if payload.get("scope"):
             available_permissions = payload["scope"].split()
+            is_permitted = False
             for available_permission in available_permissions:
                 if permission == available_permission:
-                    return True
-        return False
+                    is_permitted = True
+                    break
+            if is_permitted:
+                return True
+            else:    
+                abort(403)
+    
 
-    except:
-        abort(401)
+    except Exception as e:
+        abort(int(str(e)[0:3]))
 
 '''
 @TODO implement verify_decode_jwt(token) method
@@ -161,8 +168,9 @@ def requires_auth(permission=''):
                 token = get_token_auth_header()
                 payload = verify_decode_jwt(token)
                 check_permissions(permission, payload)
-            except:
-                abort(401)
+            except Exception as e:
+                print(e)
+                abort(int(str(e)[0:3]) if (str(e)[0:3]).isnumeric() else e.status_code)
             return f(payload, *args, **kwargs)
 
         return wrapper
