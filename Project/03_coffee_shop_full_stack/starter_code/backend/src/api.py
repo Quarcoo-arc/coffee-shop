@@ -124,27 +124,32 @@ def update_drink(permission, drink_id):
     try:
 
         payload = request.get_json()
-        payload['recipe'] = json.dumps(payload['recipe'])
 
-        if 'id' in payload:
-            del payload['id']
+        drink = Drink.query.get(drink_id)
+
+        if not drink:
+            abort(404)
         
-        updated = Drink.query.filter_by(id=drink_id).update(payload)
+        title = payload.get('title')
+        recipe = payload.get('recipe')
 
-        if updated:
+        if title:
+            drink.title = title
+        
+        if recipe:
+            if type(recipe) == list:
+                drink.recipe = json.dumps(recipe)
+            else:
+                abort(405)
+        
+        
+        drink.update()
 
-            drink = Drink.query.get(drink_id)
-            drink.update()
-
-            return jsonify({
-                "success": True,
-                "drinks": [drink.long()]
-            })
-        else:
-            return jsonify({
-                "success": False,
-                "message": "Something went wrong!"
-            })
+        return jsonify({
+            "success": True,
+            "drinks": [drink.long()]
+        })
+        
 
     except Exception as e:
         abort(405)

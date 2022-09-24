@@ -251,18 +251,17 @@
 						}
 					],
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik4wTkNOVEEzTWpaQ1FUa3lRMEl6TmtORk0wWXhRVFUwT1RFMFFVVkNSRUpDT1RBME1EUXpOUSJ9.eyJpc3MiOiJodHRwczovL3VkYWNpdHktZnNuZC5hdXRoMC5jb20vIiwic3ViIjoiZ29vZ2xlLW9hdXRoMnwxMDY3MTQ4MTQ0MTcwNjk3MTI4OTMiLCJhdWQiOlsiZGV2IiwiaHR0cHM6Ly91ZGFjaXR5LWZzbmQuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU2MDg5MDE2MCwiZXhwIjoxNTYwODk3MzYwLCJhenAiOiJPSjVwQk9ZSURFa09FVFVmUWo1ajdsSDZFTFcwMkd1MCIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJwZXJtaXNzaW9ucyI6WyJnZXQ6ZHJpbmtzIiwiZ2V0OmRyaW5rcy1kZXRhaWwiXX0.j9ocW47_exQOkEa10ffh8eijGvrIMxnGRzCmbrXnfaN_8ULsgA7AnWYMtvP8RmPWvT9n8sReWnFuJajUHBUbnBO2GuJ4aM3-WDUBeJT0X_mpGUWs4lxaNTbIkWdiWPTsEiRnP3wT-dU_v3Olw2PB4UMajMIjSH-IdF2Y1CiJIOaM0gV44RGZRyRvj6C2_mOkMfoXxzw-HrVvTRCo1NcUPea5Bs04POni7azx-B7FstP_HLm0dEbbge4XbmovHwlIXknIoI8PbuGXeLBqE2hv8fErKFBuIykxzK0nErH5zSPCrkM-_9smb8TLGAH-E5j1KQb6SHDKtcV_QHnsUYFuXA",
-									"type": "string"
-								}
-							]
-						},
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Black Cocoa\",\r\n    \"recipe\": [\r\n        {\r\n            \"name\": \"Coffee\",\r\n            \"color\": \"brown\",\r\n            \"parts\": 1\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "{{host}}/drinks",
 							"host": [
@@ -325,13 +324,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/drinks/1",
+							"raw": "{{host}}/drinks/5",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"drinks",
-								"1"
+								"5"
 							]
 						}
 					},
@@ -343,7 +342,7 @@
 				"bearer": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjNFRFVVeXZhZHdYb3YtOEpXeHpoUCJ9.eyJpc3MiOiJodHRwczovL2Rldi1ubGNvc3MtaC51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjMyODVmYjg3N2NjNzhjYWNkN2Y1NzNmIiwiYXVkIjoiaHR0cHM6Ly9jb2ZmZWUtc2hvcC5jb20vIiwiaWF0IjoxNjYzOTcwMjg0LCJleHAiOjE2NjM5Nzc0ODQsImF6cCI6IkFTbHBzMHhJbHhVSDJqbzVEVE5KR0VxS1lNVW1QVHFXIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJnZXQ6ZHJpbmtzIiwiZ2V0OmRyaW5rcy1kZXRhaWwiXX0.pLdts_vAWukFt9MI_Ox-j6AojPHB9Qr4Ge8EFVv2x7FFshaSrWDRJhT9XoRgXN_lozPLszFMTkryxnkVxG9aJTRIBarEsAd7uQmuJDxR09LmjNbX-Mm2iRNCNTbGWzcA-qUD3LnatkpXsEteB33QGhvmzZCiaZ2UmwUPfM5cBlo-0BWLDtEWGkiXk-0HDtQ6pqyDvqT2yegKsZRo76Q0-oCPlZa4vt3W-wKAxx1nACi-HqLBTUIKgNVVlOC2p00vuLzNx0DzWkDwijRfI8bqqjM4fbnKHxulR01XFrd40hJkzng8f4PaBZ-DX_r4xPeZPCzzG5SVINBPoNHVdlODXw",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjNFRFVVeXZhZHdYb3YtOEpXeHpoUCJ9.eyJpc3MiOiJodHRwczovL2Rldi1ubGNvc3MtaC51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjMyODVmYjg3N2NjNzhjYWNkN2Y1NzNmIiwiYXVkIjoiaHR0cHM6Ly9jb2ZmZWUtc2hvcC5jb20vIiwiaWF0IjoxNjY0MDI3MjczLCJleHAiOjE2NjQxMDc0NzMsImF6cCI6IkFTbHBzMHhJbHhVSDJqbzVEVE5KR0VxS1lNVW1QVHFXIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJnZXQ6ZHJpbmtzIiwiZ2V0OmRyaW5rcy1kZXRhaWwiXX0.oQOOufykiSO5Afyp9Ort-DiTCor98NMobfGWr_3vVZfzPbkdobYfAKOYjXnsBud2my-rG2qfQEGx184Mb-fk3PCy2rQb2-AQ3pLgXOzw_ryAuuVHGpjL-ZsK-qT7H1plYuOLeSAVeIAt_r0_JttxD4r4hVIqQOrKt9dWQlgME_wQfNpkkb_IWWoJPYQE_Gb2alKzVcY2XClcy-va_H_sCR4qvNG2LEgTo7Ec3hivTTZ8xDUiUkL-1eaICaSopAFL7rt0ut4ggK8uOSrIWE3lnZkfJlz5W-v1trVpF7Z9oISgFYk5zPNoSFc557FKaVVALjQOq-eNqcixug-Tlit3zg",
 						"type": "string"
 					}
 				]
@@ -469,7 +468,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"Black Toffee\",\n    \"recipe\": {\n        \"name\": \"Coffee\",\n        \"color\": \"brown\",\n        \"parts\": 1\n    }\n}"
+							"raw": "{\n    \"title\": \"Lemonade\",\n    \"recipe\": [\n        {\n            \"name\": \"Lemon\",\n            \"color\": \"green\",\n            \"parts\": 1\n        }\n    ]\n}"
 						},
 						"url": {
 							"raw": "{{host}}/drinks",
@@ -515,7 +514,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"recipe\": [\n                {\n                    \"color\": \"blue\",\n                    \"parts\": 1\n                }\n            ],\n    \"title\": \"water5\"\n}"
+							"raw": "{\n    \"recipe\": [\n                {\n                    \"color\": \"blue\",\n                    \"name\": \"water\",\n                    \"parts\": 1\n                }\n            ],\n    \"title\": \"water5\"\n}"
 						},
 						"url": {
 							"raw": "{{host}}/drinks/1",
@@ -567,7 +566,7 @@
 				"bearer": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjNFRFVVeXZhZHdYb3YtOEpXeHpoUCJ9.eyJpc3MiOiJodHRwczovL2Rldi1ubGNvc3MtaC51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjMyODVmMTVhYzEyYmIxNjg2MTJlN2JlIiwiYXVkIjoiaHR0cHM6Ly9jb2ZmZWUtc2hvcC5jb20vIiwiaWF0IjoxNjYzOTcwOTU3LCJleHAiOjE2NjM5NzgxNTcsImF6cCI6IkFTbHBzMHhJbHhVSDJqbzVEVE5KR0VxS1lNVW1QVHFXIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6ZHJpbmtzIiwiZ2V0OmRyaW5rcyIsImdldDpkcmlua3MtZGV0YWlsIiwicGF0Y2g6ZHJpbmtzIiwicG9zdDpkcmlua3MiXX0.J1WEm_z3hxsxJp5fMa1HeqrSa4rLQXR-VJ-_UC4YVIJMFXtgJv1xtXF2UzQnDyDb6qUjGu6Zq7_vsrnwCzoutgt1RXxZkxXW_uvuT5sbO-6yRucYwSS9JlI4qAPE4XBoeT2641Mnn6WbjvnYOYd8BRyTXvsJvdZ3dT36t_g58x4UdOkP_7YH9JNIbAAA0ONKNOzUNOwOCLKBXDK26pWaNwMEDHP7cR8wLlNgzo49AZFMQUFAfZ19bcOD7YSMWezcM6CBhdGqjvDdIPxf1ElxzrVL_S1yPL4hTFDpJ-oR6hapPJIvGnC_zKvTfib8kAwWwkh2F2EEZrjU0c4QAy4lBw",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjNFRFVVeXZhZHdYb3YtOEpXeHpoUCJ9.eyJpc3MiOiJodHRwczovL2Rldi1ubGNvc3MtaC51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjMyODVmMTVhYzEyYmIxNjg2MTJlN2JlIiwiYXVkIjoiaHR0cHM6Ly9jb2ZmZWUtc2hvcC5jb20vIiwiaWF0IjoxNjY0MDI3MDcwLCJleHAiOjE2NjQxMDcyNzAsImF6cCI6IkFTbHBzMHhJbHhVSDJqbzVEVE5KR0VxS1lNVW1QVHFXIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6ZHJpbmtzIiwiZ2V0OmRyaW5rcyIsImdldDpkcmlua3MtZGV0YWlsIiwicGF0Y2g6ZHJpbmtzIiwicG9zdDpkcmlua3MiXX0.hQCMWZLgv8QlMJ4AXIEnFXYDcpUKInxibe9kvrYp-ENoSrAu-TIKPAOenH_ogQFvef5vFRVUUIv34J_8VEYvAoRxyn9oI3A_zbzkmdXHRgV3FjZVJMbgf9YArvfxQyUVrWsY4Z41A1mjlMI9yhJmz8YsHd3ZEZmKY7Cb6OZr3NE8fyOaVE-jsL3UZH-Wd_x3hsL4MtKLIAQEDjxCfJu37MbA3Oo6VQWtclwpj0L2k9fyk2Vo-670zIEzighAMV5TOfaOqknjduM3t0Cycnu6udwpY5oS54dTe6sr_GmsoUQIHRUDvK0DfGHxFHB_PNOkIs9UxswLNODeJzjYvAXTug",
 						"type": "string"
 					}
 				]

@@ -4,11 +4,15 @@ from flask import request, _request_ctx_stack, abort
 from functools import wraps
 from jose import jwt
 from urllib.request import urlopen
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
-AUTH0_DOMAIN = 'dev-nlcoss-h.us.auth0.com'
+AUTH0_DOMAIN = os.getenv('AUTH0_DOMAIN')
 ALGORITHMS = ['RS256']
-API_AUDIENCE = 'https://coffee-shop.com/'
+API_AUDIENCE = os.getenv('API_AUDIENCE')
 
 ## AuthError Exception
 '''
@@ -67,18 +71,12 @@ def get_token_auth_header():
 '''
 def check_permissions(permission, payload):
     try:
-        if payload.get("scope"):
-            available_permissions = payload["scope"].split()
-            is_permitted = False
-            for available_permission in available_permissions:
-                if permission == available_permission:
-                    is_permitted = True
-                    break
-            if is_permitted:
-                return True
-            else:    
-                abort(403)
-    
+        if not payload.get("permissions"):
+            abort(401)
+        elif permission not in payload["permissions"]:
+            abort(403)
+        else:
+            return True    
 
     except Exception as e:
         abort(int(str(e)[0:3]))
